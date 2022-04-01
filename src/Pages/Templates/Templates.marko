@@ -1,0 +1,91 @@
+import axios from "axios";
+
+static const apiURL = "http://bnd.micros.io:10001/v1"
+
+class {
+  onCreate(input){
+    this.state = {
+      templates: [1]
+    }
+
+  }
+  onMount(){
+    let options = {
+      origin: "http://eps.vend.one",
+      //BND-User-Agent: "VO.EPS/1.0",
+      //BND-Application: "Multipple",
+      //BND-Access-Token: "STcN2NjZTg5OTueWr6gR2OekQM0ZDlkONGUyP3Rzicj9GVNxZK5aE9nPRXKzI4MzY3NDNjNDUQx1NjQyN2M1p",
+    }
+    //axios.get(`${apiURL}/template/list`, options)
+      //.then(data => {
+        //console.log(data)
+      //}).catch(err => console.log(err.message))
+  }
+}
+
+<Dashboard navigate=input.navigate>
+  <div class="d-flex justify-content-between align-items-center  mb-2 border-bottom">
+    <h3>Templates</h3>
+  </div>
+  <section>
+    <if(state.templates.length)>
+      <button type="button" class="btn btn-primary block" on-click(()=> input.navigate('/create-template'))>
+        Create templates
+      </button>
+
+      <div class="row">
+        
+        <div class="col-xl-4 col-md-6 col-sm-12">
+          <div class="card ">
+          <div class="card-header">
+            <h4 class="card-title" style="cursor:pointer;" on-click(()=> input.navigate('/view-template',1))>Verification Code</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              Send a verification code to user via email or SMS
+            </p>
+            <button class="btn btn-primary block" >Select</button>
+          </div>
+          </div>
+        </div>
+        
+        <div class="col-xl-4 col-md-6 col-sm-12">
+          <div class="card ">
+          <div class="card-header">
+            <h4 class="card-title">News Letter</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              Send a verification code to user via email or SMS
+            </p>
+            <button class="btn btn-primary block">Select</button>
+          </div>
+          </div>
+        </div>
+        
+        <div class="col-xl-4 col-md-6 col-sm-12">
+          <div class="card ">
+          <div class="card-header">
+            <h4 class="card-title">Course Announcement</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              Send a verification code to user via email or SMS
+            </p>
+            <button class="btn btn-primary block">Select</button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </if>
+    <else>
+      <div class="row " style="min-height:50vh">
+        <div class="col-md-6 text-center m-auto" >
+          <p.card-text.h4>Please you currently don't have any Templates</p>
+          <button.btn.btn-primary on-click(()=> input.navigate('/create-template'))>Create Template</button>
+        </div>
+      </div>
+    </else>
+
+  </section>
+</Dashboard>

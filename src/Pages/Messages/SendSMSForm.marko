@@ -1,0 +1,224 @@
+import FormHandler from 'markojs-form'
+
+static const options = {
+    key: 'sms-form',
+    autosave: true,
+    crosscheck: true
+}
+
+class {
+  onCreate(input){
+    const initialForm = {registryID: 'registryID', recipientName: 'recipientName', recipientEmail: 'recipientEmail', sender: 'senderName', templateID: 'templateID', subject: 'subject', institution: 'institution', name: 'name'};
+
+    this.state = {
+      sendTo: 'registry',
+      sendWhen: "now"
+    }
+
+    this.fhandler = new FormHandler( options )
+    this.fhandler.bind(this, initialForm)
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    console.log(this.state.form)
+    console.log("create template")
+  }
+
+  handleSendTo(data) {
+    this.state.sendTo = data
+  }
+
+  handleSendWhen(data) {
+    this.state.sendWhen = data
+  }
+}
+
+<Dashboard navigate=input.navigate>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  pb-2 mb-3 border-bottom">
+    <h3>Send SMS</h3>
+  </div>
+
+  <section>
+    
+    <div class="form-group">
+      <h4>Select recipients</h4> 
+      <ul class="list-unstyled mb-0">
+        <li class="d-inline-block mr-2 mb-1">
+          <div class="radio">
+            <input type="radio" name="sendto" id="registry"  on-click("handleSendTo","registry") checked=state.sendTo === 'registry'>
+            <label for="registry">registry</label>
+          </div>
+        </li>
+        <li class="d-inline-block mr-2 mb-1">
+          <div class="radio radio-lg">
+            <input type="radio" name="sendto" id="individual" on-click("handleSendTo","individual") checked=state.sendTo === 'individual'>
+            <label for="individual">individual</label>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    
+    <div class="row">
+      <div class="col-md-6">
+        <if(state.sendTo == 'registry')>
+          <div class="form-group">
+            <label for="contact">Select registry</label>
+            <select id="contact" class="form-control form-control-lg" value=state.form.registryID name="registryID" on-change("__onChange")>
+              <option selected>Select contacts</option>
+              <option value="students">Students</option>
+              <option value="stuff">Stuff</option>
+              <option value="personal">Personal</option>
+            </select>
+          </div>
+          
+        </if>
+        <if(state.sendTo == "individual")>
+          <div class="form-group">
+            <label for="recipientName">Enter Recipient Name</label>
+            <input class="form-control form-control-lg" type="text" id="recipientName" name="recipientName" value=state.form.recipientName on-change('__onChange') placeholder="recipient name" />
+          </div>
+          <div class="form-group">
+            <label for="recipientEmail">Enter Recipient Emaiil</label>
+            <input class="form-control form-control-lg" type="email" id="recipientEmail" name="recipientEmail" value=state.form.recipientEmail on-change('__onChange') placeholder="recipient email" />
+          </div>
+          
+        </if>
+        <div class="form-group">
+          <label for="recipientEmail">Select template</label>
+          <select class="form-control form-control-lg" name="recipientEmail" value=state.form.templateID on-change('__onChange')>
+            <option selected>Select template</option>
+            <option value="1">verification code</option>
+            <option value="2">news letter</option>
+            <option value="3">course annoucement</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Sender</label>
+          <input class="form-control form-control-lg" type="text" id="date" placeholder="Joseph Nartey" 
+          name="sender" 
+          value=state.form.sender 
+          on-change('__onChange')/>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <label>Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="name"
+              name="name" 
+              value=state.form.name 
+              on-change('__onChange')
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <label>Institution</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Institution"
+              name="institution" 
+              value=state.form.institution 
+              on-change('__onChange')
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <label>Subject</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="subject"
+              name="subject" 
+              value=state.form.subject 
+              on-change('__onChange')
+            />
+          </div>
+        </div>
+        <!-- <div class="form-group">
+          <div class="controls">
+            <label>Description</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="description"
+              name="description" 
+              value=state.form.description 
+              on-change('__onChange')
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <label>Text</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="text"
+              value="is your 4-digit verification code. Do not share it with 3rd party."
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <label>refURL</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="refURL"
+              value="https://support.vend.one/pvc-verify"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <label>Compose message</label>
+            <textarea class="form-control form-control-lg" placeholder="enter your message" rows="15" ></textarea>
+          </div>
+        </div> -->
+        <div class="form-group">
+          <h4>When to send</h4>
+          <ul class="list-unstyled mb-0">
+            <li class="d-inline-block mr-2 mb-1">
+              <div class="radio">
+                <input type="radio" name="when" id="now" on-click("handleSendWhen", 'now') checked=state.sendWhen === 'now'>
+                <label for="now">send now</label>
+              </div>
+            </li>
+            <li class="d-inline-block mr-2 mb-1">
+              <div class="radio radio-lg">
+                <input type="radio" name="when" id="later" on-click("handleSendWhen", 'later') checked=state.sendWhen === 'later'>
+                <label for="later">send later</label>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <if(state.sendWhen == "later")>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input class="form-control form-control-lg" type="date" id="date" />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="date">Time</label>
+                <input class="form-control form-control-lg" type="text" id="date" placeholder="HH:MM" />
+              </div>
+            </div>
+          </div>
+        </if>
+
+        <button class="btn btn-primary btn-lg my-3">
+          send
+        </button>
+      </div>
+    </div>
+  </section>
+</Dashboard>

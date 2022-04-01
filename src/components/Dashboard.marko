@@ -1,0 +1,42 @@
+
+class {
+  onCreate(input){
+    this.state={
+      navigations: [
+        {title: "SMS & Emails", url: "sms-emails"},
+        {title: "Templates", url: "templates"},
+        {title: "Registries", url: "registries"},
+        {title: "Transporters", url: "transporters"},
+        {title: "Subscriptions", url: "subscribtions"},
+      ],
+    }
+  }
+}
+
+<div class="container-fluid ">
+  <div class="row">
+    <nav class="col-md-4 col-lg-2 d-md-block theme-bg-primary sidebar position-fixed left-0 bottom-0 top-0 right-0 collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav navbar-nav" >
+          <li class="nav-link white-text py-1 h4  mb-4" style="cursor:pointer;" on-click(()=>input.navigate('/'))>
+            Multipple BND
+          </li>
+          
+          <for|item, index| of=state.navigations>
+            <li class="nav-link white-text py-1 h4  mb-4" style="cursor:pointer;" on-click(()=> input.navigate('/' + item.url)) >
+              ${item.title}
+            </li>
+          </for>
+
+          <li class="nav-link white-text py-1 h4  mb-4" style="cursor:pointer;" on-click(()=>input.navigate('/login'))>
+            Logout
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="col-md-8 col-lg-10 px-4  ml-auto" >
+      <${input.renderBody} input=input/>
+    </main>
+  </div>
+</div>

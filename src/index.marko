@@ -1,0 +1,67 @@
+import Home from "./Pages/Home"
+import Login from "./Pages/Login"
+import Subscribe from "./Pages/Subscribe"
+import Transporters from "./Pages/Transport/Transporters"
+import CreateTransporter from "./Pages/Transport/CreateTransporter"
+import TransporterDetails from "./Pages/Transport/TransporterDetails"
+import Templates from "./Pages/Templates/Templates"
+import CreateTemplate from "./Pages/Templates/CreateTemplate"
+import TemplateDetails from "./Pages/Templates/TemplateDetails"
+import Registries from "./Pages/Registry/Registries"
+import CreateRegistry from "./Pages/Registry/CreateRegistry"
+import ViewRegistry from "./Pages/Registry/ViewRegistry"
+import EditRegistry from "./Pages/Registry/EditRegistry"
+import Subscriptions from "./pages/Subscriptions/Subscriptions"
+import Messages from "./pages/Messages/Messages"
+import SendEmailForm from "./pages/Messages/SendEmailForm"
+import SendSMSForm from "./pages/Messages/SendSMSForm"
+
+static const apiURL = "http://bnd.micros.io:10001/v1"
+
+class {
+  onCreate(input){
+    this.state = {isLogedIn: false}
+  }
+}
+
+<div>
+  <MiniRouter namespace="bnd" nomenory norefresh>
+        <if(!state.isLogedIn)>
+        <@page path="/" 
+                default
+                template=Subscriptions/>
+        </if>
+        <@page path="/templates"
+                template=Templates/>
+        <@page path="/view-template"
+                template=TemplateDetails/>
+        <@page path="/create-template"
+                template=CreateTemplate/>
+        <@page path="/sms-emails"
+                template=Messages/>
+        <@page path="/send-email"
+                template=SendEmailForm/>
+        <@page path="/send-sms"
+                template=SendSMSForm/>
+        <@page path="/registries"
+                template=Registries/>
+        <@page path="/create-registry"
+                template=CreateRegistry/>
+        <@page path="/view-registry"
+                template=ViewRegistry/>
+        <@page path="/edit-registry"
+                template=EditRegistry/>
+        <@page path="/subscribtions"
+                template=Subscriptions/>
+        <@page path="/transporters"
+                template=Transporters/>
+        <@page path="/create-transporter"
+                template=CreateTransporter/>
+        <@page path="/edit-transporter"
+                template=TransporterDetails/>
+        <@page path="/subscribe"
+                template=Subscribe/>
+        <@page path="/login"
+                template=Login/>
+  </MiniRouter>
+</div>

@@ -1,0 +1,49 @@
+class {
+  onCreate(input){
+    this.state = {
+      transporters: [1]
+    }
+  }
+}
+
+<Dashboard navigate=input.navigate>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  mb-2 border-bottom">
+    <h3>Transports</h3>
+  </div>
+
+  <section>
+    <if(state.transporters.length)>
+      <div>
+        <button.btn.btn-primary on-click(()=> input.navigate('/create-transporter'))>add SMTP Transporter</button>
+      </div>
+      
+      <div class="row">
+
+        <div class="col-xl-4 col-md-6 col-sm-12">
+          <div class="card ">
+          <div class="card-header">
+            <h4 class="card-title" style="cursor:pointer;" on-click(()=> input.navigate('/edit-transporter',1))>General Email Sender</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              General Email transporter to users via email or SMS
+            </p>
+            <button class="btn btn-primary block" on-click(()=> input.navigate('/edit-transporter',1))>Edit</button>
+            <button class="btn btn-primary block ml-2" >Delete</button>
+          </div>
+          </div>
+        </div>
+
+      </div>
+    </if>
+    <else>
+      <div class="row " style="min-height:50vh">
+        <div class="col-md-6 text-center m-auto" >
+          <p.card-text.h4>Please you currently don't have any Transports</p>
+          <button.btn.btn-primary on-click(()=> input.navigate('/create-transporter'))>Create Transporter</button>
+        </div>
+      </div>
+    </else>
+
+  </section>
+</Dashboard>

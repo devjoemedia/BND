@@ -1,0 +1,75 @@
+class {
+  onCreate(){
+    this.state = {
+      subStatus: false,
+      registries: [1]
+    }
+  }
+}
+
+<Dashboard navigate=input.navigate>
+  <div class="d-flex justify-content-between align-items-center  mb-2 border-bottom">
+    <h3>Registries</h3>
+  </div>
+  <section>
+    <if(state.registries.length)>
+      <button type="button" class="btn btn-primary block"  on-click(()=> input.navigate('/create-registry'))>
+        add new registry
+      </button>
+      <div class="row">
+        
+        <div class="col-xl-4 col-md-6 col-sm-12">
+          <div class="card ">
+           <div class="card-header">
+            <h4 class="card-title" style="cursor:pointer" on-click(()=> input.navigate('/view-registry',1))>Stuff</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              710b962e-041c-11e1-9234-0123456789ab
+            </p>
+            <button class="btn btn-primary block">Select</button>
+          </div>
+          </div>
+        </div>
+        
+        <div class="col-xl-4 col-md-6 col-sm-12">
+          <div class="card ">
+           <div class="card-header">
+            <h4 class="card-title" style="cursor:pointer" on-click(()=> input.navigate('/view-registry',1))>Students</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              710b962e-041c-11e1-9234-0123456789ab
+            </p>
+            <button class="btn btn-primary block">Select</button>
+          </div>
+          </div>
+        </div>
+        
+        <div class="col-xl-4 col-md-6 col-sm-12">
+          <div class="card ">
+           <div class="card-header">
+            <h4 class="card-title" style="cursor:pointer" on-click(()=> input.navigate('/view-registry',1))>Personal</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              710b962e-041c-11e1-9234-0123456789ab
+            </p>
+            <button class="btn btn-primary block">Select</button>
+          </div>
+          </div>
+        </div>
+      </div>
+      
+    </if>
+    <else>
+      <div class="row " style="min-height:50vh">
+        <div class="col-md-6 text-center m-auto" >
+          <p.card-text.h4>Please you currently don't have any Registries</p>
+          <button.btn.btn-primary on-click(()=> input.navigate('/create-registry'))>Create Registry</button>
+        </div>
+      </div>
+    </else>
+
+  </section>
+</Dashboard>

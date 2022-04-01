@@ -1,0 +1,27 @@
+{
+	"type": "application",
+	"name": "BND",
+	"namespace": "multipple",
+	"nsi": "bnd",
+	"description": "email app",
+	"version": "1.0",
+	"favicon": "favicon.png",
+	"categories": [
+		"test"
+	],
+	"runscript": {
+		"*": {
+			"workspace": "qs",
+			"autoload": true
+		}
+	},
+	"resource": {
+		"dependencies": [],
+		"permissions": {},
+		"services": {}
+	},
+	"author": {
+		"type": "developer",
+		"name": "Multipple"
+	}
+}

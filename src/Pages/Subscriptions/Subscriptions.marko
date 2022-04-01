@@ -1,0 +1,166 @@
+class {
+  onCreate(){
+    this.state = {
+      subscribed: true,
+    }
+  }
+}
+
+<Dashboard navigate=input.navigate>
+  <div class="d-flex justify-content-between  align-items-center  mb-2 border-bottom">
+    <h3>Subscribtion Management</h3>
+  </div>
+  <section>
+    <div class="col-md-8 border p-1 mb-2 d-flex justify-content-between">
+      <div>
+        <h5>Free</h5>
+        <p class="text-muted">$0/month</p>
+        <p>Powerful messaging with easy setup.</p>
+      </div>
+      <div class="col-4 text-right">
+        <button class="btn btn-primary" disabled>currentl plan</button>
+        <p>expire in 10 days</p>
+        <button class="btn btn-primary" >renew plan</button>
+      </div>
+    </div>
+    <div class="col-md-8 border p-1 mb-2 d-flex justify-content-between">
+      <div>
+        <h5>Professional</h5>
+        <p class="text-muted">$36/month</p>
+        <p>Powerful messaging with easy setup.</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" >select plan</button>
+      </div>
+    </div>
+    <div class="col-md-8 border p-1 mb-2 d-flex justify-content-between">
+      <div>
+        <h5>Enterprise</h5>
+        <p class="text-muted">$46/month</p>
+        <p>Powerful messaging with easy setup.</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" >select plan</button>
+      </div>
+    </div>
+    <!-- <if(state.subscribed)>
+      <div class="row">
+        <div class="col-12">
+          <form class="form-validate">
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <div class="controls">
+                    <label>Attribute</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="attribute"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="controls">
+                    <label>Host</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="host"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="controls">
+                    <label>Port</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="port"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="controls">
+                    <label>Security</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="security"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="controls">
+                    <label>App Origin</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="App Origin"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="controls">
+                    <label>User Agent</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="User Agent"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="controls">
+                    <label>Username</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="user name"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="controls">
+                    <label>Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="password"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+                class="mt-1"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                >
+                  Save
+                </button>
+                <button type="reset" class="btn btn-light ml-1">Cancel</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </if>
+    <else>
+      <div class="row " style="min-height:50vh">
+        <div class="col-md-6 text-center m-auto" >
+          <p.card-text.h4>Please you currently don't have any subscribers yet.</p>
+          <button.btn.btn-primary on-click(()=> input.navigate('/add-subscriber'))>add subscriber</button>
+        </div>
+      </div>
+    </else> -->
+  </section>
+</Dashboard>

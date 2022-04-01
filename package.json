@@ -1,0 +1,22 @@
+{
+	"name": "bnd",
+	"description": "email app",
+	"version": "1.0",
+	"private": true,
+	"scripts": {
+		"start": "cd ./.sandbox && yarn start",
+		"test": "cd ./.sandbox && yarn test:dev"
+	},
+	"main": "src/index.marko",
+	"workspaces": [
+		".sandbox"
+	],
+	"dependencies": {
+		"axios": "^0.26.1",
+		"marko": "4.24.0",
+		"markojs-form": "^1.0.2"
+	},
+	"author": "Multipple",
+	"repository": "-",
+	"licence": "GNU"
+}

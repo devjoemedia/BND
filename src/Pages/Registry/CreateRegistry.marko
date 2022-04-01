@@ -1,0 +1,81 @@
+import FormHandler from 'markojs-form'
+
+static const options = {
+    key: 'create-reg',
+    autosave: true,
+    crosscheck: true
+}
+
+class {
+  onCreate(input){
+    const initialForm = { name: 'name', description: 'desc', list:"list"}
+
+    this.fhandler = new FormHandler( options )
+    this.fhandler.bind(this, initialForm)
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    console.log(this.state.form)
+    console.log("create template")
+  }
+}
+
+<Dashboard navigate=input.navigate>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  mb-2 border-bottom">
+    <h3>Add Registry</h3>
+  </div>
+
+  <section>
+    <div class="row">
+      <div class="col-12">
+        <form class="form-validate">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <div class="controls">
+                  <label>Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="name"
+                    value=state.form.name
+                    name="name"
+                    on-change("__onChange")
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <label>Description</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="description"
+                    value=state.form.description
+                    name="description"
+                    on-change("__onChange")
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <label>Contact Lists</label> 
+                  <br />
+                  <small >paste you contacts with space separated</small>
+                  <textarea class="form-control" placeholder="paste you contacts with space separated" rows="15" name="list" on-change("__onChange")>${state.form.list}</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-1" >
+            <button type="submit" class="btn btn-primary" on-click("handleSubmit")>
+              Save
+            </button>
+            <button type="reset" class="btn btn-light ml-1" on-click(()=> input.navigate('/registries'))>Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</section>
+</Dashboard>

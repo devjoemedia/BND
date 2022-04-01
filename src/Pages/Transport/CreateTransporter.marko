@@ -1,0 +1,152 @@
+import FormHandler from 'markojs-form'
+
+static const options = {
+    key: 'create-trans',
+    autosave: true,
+    crosscheck: true
+}
+
+class {
+  onCreate(input){
+    const initialForm = { attribute: 'attributes', host: 'trans host', port:"port", security: 'security', appOrigin: "origin", userAgent: "userAgent", userName: "username", password: "password"}
+
+    this.fhandler = new FormHandler( options )
+    //console.log(input);
+    this.fhandler.bind(this, initialForm)
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    console.log(this.state.form)
+    console.log("create template")
+  }
+}
+
+<Dashboard navigate=input.navigate>
+  <div class="d-flex justify-content-between align-items-center  mb-2 border-bottom">
+    <h3>Create Transporter</h3>
+  </div>
+
+  <section>
+    <div class="row">
+      <div class="col-12">
+        <form class="form-validate">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <div class="controls">
+                  <label>Attribute</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="attribute"
+                    value=state.form.attribute
+                    name="attribute"
+                    on-change("__onChange")
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <label>Host</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="host"
+                    value=state.form.host
+                    name="host"
+                    on-change("__onChange")
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <label>Port</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="port"
+                    value=state.form.port
+                    name="port"
+                    on-change("__onChange")
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <label>Security</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="security"
+                    value=state.form.security
+                    name="security"
+                    on-change("__onChange")
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <label>App Origin</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="App Origin"
+                    value=state.form.appOrigin
+                    name="appOrigin"
+                    on-change("__onChange")
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <label>User Agent</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="User Agent"
+                    value=state.form.userAgent
+                    name="userAgent"
+                    on-change("__onChange")
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <label>Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="user name"
+                    value=state.form.userName
+                    name="userName"
+                    on-change("__onChange")
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="password"
+                    value=state.form.password
+                    name="password"
+                    on-change("__onChange")
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-1" >
+            <button type="submit" class="btn btn-primary" on-click("handleSubmit")>
+              Save
+            </button>
+            <button type="reset" class="btn btn-light ml-1" on-click(()=> input.navigate('/transporters'))>Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</section>
+</Dashboard>
