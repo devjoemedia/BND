@@ -1,26 +1,23 @@
-import axios from "axios";
-
 static const apiURL = "http://bnd.micros.io:10001/v1"
-
 class {
-  onCreate(input){
+  onCreate({App}){
+    App.extend(this) // This will make all dependency declared with `Declare(this, [...]) available here too. Eg. `Request`
     this.state = {
-      templates: [1]
+     templates: []
     }
+    //console.log(App)
+  }
 
+  async getTemplates(){
+   try {
+     const { error, message, templates } = await this.App.Request(`${apiURL}/template/list`, { method: 'GET' })
+     if( error ) throw new Error( message )
+  
+     this.state.templates = templates
+   }
+   catch( error ){ console.log('Failed fetching templates: ', error) }
   }
-  onMount(){
-    let options = {
-      origin: "http://eps.vend.one",
-      //BND-User-Agent: "VO.EPS/1.0",
-      //BND-Application: "Multipple",
-      //BND-Access-Token: "STcN2NjZTg5OTueWr6gR2OekQM0ZDlkONGUyP3Rzicj9GVNxZK5aE9nPRXKzI4MzY3NDNjNDUQx1NjQyN2M1p",
-    }
-    //axios.get(`${apiURL}/template/list`, options)
-      //.then(data => {
-        //console.log(data)
-      //}).catch(err => console.log(err.message))
-  }
+  
 }
 
 <Dashboard navigate=input.navigate>

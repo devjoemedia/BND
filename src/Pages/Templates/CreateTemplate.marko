@@ -1,4 +1,5 @@
 import FormHandler from 'markojs-form'
+import axios from 'axios'
 
 static const options = {
     key: 'create-temp',
@@ -11,14 +12,27 @@ class {
     const initialForm = { name: 'gremdol', description: 'my@email.com', refURL:"refURL", text: 'my@email.com', html: "html"}
 
     this.fhandler = new FormHandler( options )
-    //console.log(input);
+
     this.fhandler.bind(this, initialForm)
   }
 
   handleSubmit() {
-    
     console.log(this.state.form)
-    console.log("create template")
+    axios({
+      method: 'post',
+      url:'/create-checkout-session',
+      headers: { 
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'  
+    },
+      data: {
+        price: this.state.total
+      } 
+    })
+    .then(({ data }) => {
+      window.location = data.url
+    })
+    .catch(err => console.log(err.message))
   }
 }
 

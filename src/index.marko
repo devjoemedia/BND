@@ -19,7 +19,8 @@ import SendSMSForm from "./pages/Messages/SendSMSForm"
 static const apiURL = "http://bnd.micros.io:10001/v1"
 
 class {
-  onCreate(input){
+  onCreate({ Declare }){
+    Declare(this, ['Request']) // Declare the app and require the in-build `Request` API
     this.state = {isLogedIn: false}
   }
 }
@@ -29,10 +30,11 @@ class {
         <if(!state.isLogedIn)>
         <@page path="/" 
                 default
-                template=Subscriptions/>
+                template=Templates/>
         </if>
         <@page path="/templates"
-                template=Templates/>
+                template=Templates
+                App=component.App/>
         <@page path="/view-template"
                 template=TemplateDetails/>
         <@page path="/create-template"
