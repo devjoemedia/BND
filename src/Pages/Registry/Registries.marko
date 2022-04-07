@@ -9,7 +9,7 @@ class {
 
 <Dashboard navigate=input.navigate>
   <div class="d-flex justify-content-between align-items-center  mb-2 border-bottom">
-    <h3>Registries</h3>
+    <h4>Registries</h4>
   </div>
   <section>
     <if(state.registries.length)>
@@ -65,7 +65,7 @@ class {
     <else>
       <div class="row " style="min-height:50vh">
         <div class="col-md-6 text-center m-auto" >
-          <p.card-text.h4>Please you currently don't have any Registries</p>
+          <h5.card-text>Please you currently don't have any Registries</h5>
           <button.btn.btn-primary on-click(()=> input.navigate('/create-registry'))>Create Registry</button>
         </div>
       </div>

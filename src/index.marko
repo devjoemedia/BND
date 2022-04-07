@@ -30,7 +30,8 @@ class {
         <if(!state.isLogedIn)>
         <@page path="/" 
                 default
-                template=Templates/>
+                template=Templates
+                App=component.App/>
         </if>
         <@page path="/templates"
                 template=Templates
