@@ -14,7 +14,7 @@ class {
   <section>
     <if(state.transporters.length)>
       <div>
-        <button.btn.btn-primary on-click(()=> input.navigate('/create-transporter'))>add SMTP Transporter</button>
+        <button.btn.btn-lg.btn-primary on-click(()=> input.navigate('/create-transporter'))>add SMTP Transporter</button>
       </div>
       
       <div class="row">
@@ -28,8 +28,8 @@ class {
             <p class="card-text">
               General Email transporter to users via email or SMS
             </p>
-            <button class="btn btn-primary block" on-click(()=> input.navigate('/edit-transporter',1))>Edit</button>
-            <button class="btn btn-primary block ml-2" >Delete</button>
+            <button class="btn btn-lg btn-primary block" on-click(()=> input.navigate('/edit-transporter',1))>Edit</button>
+            <button class="btn btn-lg btn-primary block ml-2" >Delete</button>
           </div>
           </div>
         </div>
@@ -40,7 +40,7 @@ class {
       <div class="row " style="min-height:50vh">
         <div class="col-md-6 text-center m-auto" >
           <h5.card-text>Please you currently don't have any Transports</h5>
-          <button.btn.btn-primary on-click(()=> input.navigate('/create-transporter'))>Create Transporter</button>
+          <button.btn.btn-lg.btn-primary on-click(()=> input.navigate('/create-transporter'))>Create Transporter</button>
         </div>
       </div>
     </else>

@@ -12,7 +12,7 @@ class {
   }
 }
 
-<div class="container-fluid ">
+<div class="container-fluid" >
   <div class="row">
     <nav class="theme-bg-primary  position-fixed vh-100" style="width: 10rem;">
       <div class="position-sticky pt-3 h-100">
@@ -29,16 +29,16 @@ class {
             </li>
           </for>
           
-          <li class="py-1 cursor-pointer position-absolute bottom-0 w-100"  on-click(()=>input.navigate('/login'))>
+          <!-- <li class="py-1 cursor-pointer position-absolute bottom-0 w-100"  on-click(()=>input.navigate('/login'))>
             <i class="bx bx-log-out font-large-1 white-text"></i>
             <p class="white-text">Logout</p>
-          </li>
+          </li> -->
         </ul>
         
       </div>
     </nav>
 
-    <main class="w-100 px-3" style="margin-left:10rem;">
+    <main class="w-100 px-3" style="margin-left:12rem; margin-right:2rem; min-height:100vh;">
       <${input.renderBody} input=input/>
     </main>
   </div>

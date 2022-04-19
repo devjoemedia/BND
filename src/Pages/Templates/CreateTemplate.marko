@@ -9,18 +9,36 @@ static const options = {
 
 class {
   onCreate(input){
-    const initialForm = { name: 'gremdol', description: 'my@email.com', refURL:"refURL", text: 'my@email.com', html: "html"}
+    const initialForm = { name: 'gremdol', description: 'my@email.com', refURL:"refURL", text: '{{vCode}} is your 4-digit verification code. Do not share it with 3rd party. {{refURL}}', html: "<html><body><p><strong>{{vCode}}</strong> is your 4-digit verification code. Do not share it with 3rd party.</p><a href='{{refURL}}'>Check reference</a></body></html>"}
+
+    this.state = {
+      scope: [],
+    }
+
+    
 
     this.fhandler = new FormHandler( options )
 
     this.fhandler.bind(this, initialForm)
   }
 
+  onMount(){
+    let regex = /{{(.*?)}}/g
+
+    let scopeItems = this.state.form.html.match(regex)
+
+    this.state.scope = scopeItems.map(ma => {
+      return ma.split('').slice(2, ma.split('').length -2).join('')
+    });
+
+    console.log(this.state.scope)
+  }
+
   handleSubmit() {
     console.log(this.state.form)
     axios({
       method: 'post',
-      url:'/create-checkout-session',
+      url:'/',
       headers: { 
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'  
@@ -37,8 +55,8 @@ class {
 }
 
 <Dashboard navigate=input.navigate>
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  mb-3 border-bottom">
-    <h3>Create Template</h3>
+  <div class="mb-3">
+    <h3 class="text-center">Create Template</h3>
   </div>
 
   <section>
@@ -46,13 +64,13 @@ class {
       <div class="col-12">
         <form class="form-validate">
           <div class="row">
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-10 col-lg-8 mx-auto">
               <div class="form-group">
                 <div class="controls">
                   <label>Name</label>
                   <input
                     type="text"
-                      class="form-control"
+                      class="form-control form-control-lg"
                       placeholder="name"
                       name="name"
                       value=state.form.name
@@ -65,7 +83,7 @@ class {
                   <label>Description</label>
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control form-control-lg"
                     placeholder="description"
                     name="description"
                     value=state.form.description
@@ -75,10 +93,14 @@ class {
               </div>
               <div class="form-group">
                 <div class="controls">
+                  <label>
+                    Text and HTML fields are optional but One of them must have value before submition. And if template is for SMS use text field must have value.
+                  </label>
+                  <br />
                   <label>Text</label>
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control form-control-lg"
                     placeholder="text"
                     name="text"
                     value=state.form.text
@@ -86,35 +108,35 @@ class {
                   />
                 </div>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <div class="controls">
                   <label>refURL</label>
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control form-control-lg"
                     placeholder="refURL"
                     name="refURL"
                     value=state.form.refURL
                     on-change("__onChange")
                   />
                 </div>
-              </div>
+              </div> -->
               <div class="form-group">
                 <div class="controls">
                   <label>HTML</label>
                   
-                  <textarea class="form-control" placeholder="html structure of your email template" rows="15" name="html" on-change("__onChange") >${state.form.html}</textarea>
+                  <textarea class="form-control form-control-lg" placeholder="html structure of your email template" rows="15" name="html" on-change("__onChange") >${state.form.html}</textarea>
                 </div>
+              </div>
+              <div class="my-2">
+                <button type="reset" class="btn btn-lg btn-light mr-1" on-click(()=> input.navigate('/templates'))>Cancel</button>
+                <button type="submit" class="btn btn-lg btn-primary" on-click("handleSubmit") >
+                  Save
+                </button>
               </div>
             </div>
           </div>
         </form>
-        <div class="mt-1">
-          <button type="submit" class="btn btn-primary" on-click("handleSubmit") >
-            Save
-          </button>
-          <button type="reset" class="btn btn-light ml-1" on-click(()=> input.navigate('/templates'))>Cancel</button>
-        </div>
       </div>
     </div>
   </section>

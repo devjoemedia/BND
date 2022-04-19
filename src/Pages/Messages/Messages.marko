@@ -1,58 +1,76 @@
+class {
+  onCreate(){
+    this.state = {
+      messages: []
+    }
+  }
+}
 <Dashboard navigate=input.navigate>
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  pb-2 mb-3 border-bottom">
     <h4>Messages</h4>
   </div>
   <section>
     <div class="mb-4">
-      <button.btn.btn-primary on-click(()=> input.navigate('/send-email'))>Send Email</button>
-      <button.btn.btn-primary.ml-2 on-click(()=> input.navigate('/send-sms'))>Send SMS</button>
+      <button.btn.btn-lg.btn-primary on-click(()=> input.navigate('/send-email'))>Send Email</button>
+      <button.btn.btn-lg.btn-primary.ml-2 on-click(()=> input.navigate('/send-sms'))>Send SMS</button>
     </div>
 
-    <h4>Your recent messages</h4>
     <section>
       
+      <h4>Your recent messages</h4>
       <div class="row">
-        <div class="col-12">
-          <div.card-body>
+        <div class="col-12 col-md-12 col-lg-10">
+          <div>
             <div.table-responsive>
               <table.table>
                 <thead>
                   <tr>
-                    <th>Date</th>
-                    <th>TemplateID</th>
-                    <th>Contacts</th>
+                    <th>Title</th>
+                    <th>Sender</th>
+                    <th>Registry/Contact name</th>
+                    <th>Template name</th>
                     <th>Status</th>
+                    <th>Date</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>24th June 2015</td>
-                    <td>2233ed4-4445re</td>
-                    <td>44</td>
+                    <td>Email Verification</td>
+                    <td>Joseph Nartey</td>
+                    <td>Jane Doe</td>
+                    <td>Verification Code</td>
                     <td>success</td>
+                    <td>24th June 2015</td>
                   </tr>
                   <tr>
-                    <td>24th June 2015</td>
-                    <td>2233ed4-4445re</td>
-                    <td>44</td>
+                    <td>Email Verification</td>
+                    <td>Joseph Nartey</td>
+                    <td>Jane Doe</td>
+                    <td>Verification Code</td>
                     <td>success</td>
+                    <td>24th June 2015</td>
                   </tr>
                   <tr>
-                    <td>24th June 2015</td>
-                    <td>2233ed4-4445re</td>
-                    <td>44</td>
+                    <td>Email Verification</td>
+                    <td>Joseph Nartey</td>
+                    <td>Jane Doe</td>
+                    <td>Verification Code</td>
                     <td>success</td>
+                    <td>24th June 2015</td>
                   </tr>
                 </tbody>
               </table>
 
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
+              <if(state.messages.length > 10)>
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+              </if>
+
             </div>
           </div>
         </div>
